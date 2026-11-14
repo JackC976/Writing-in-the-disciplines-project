@@ -89,11 +89,11 @@ button.b,.wb button,nav button{min-height:44px}
   <div class="card"><h3>Six Sigma</h3>
     <p>Sigma refers to a deviation from an average value, so six sigma means six standard deviations from the mean. At that level, 99.9999998% of manufactured parts fall within tolerance, which is close to perfection. The method assumes that process changes such as tool wear will push results off center, so it builds in a 1.5 sigma buffer. That buffer leads to the practical goal of 3.4 defects per million parts (Clegg et al., 2010, p. 142).</p>
     <p>Six Sigma reaches that precision through the DMAIC standard, explained below. It takes existing methods of efficiency and gives them a path to improvement: analyze current conditions, make a matching change, then monitor that change over time.</p></div>
-  <figure class="fw"><img src="images/six-sigma.png?v=2" width="1536" height="1024" alt="Bell curve out to six standard deviations, with a table of sigma levels, defects per million opportunities, and yield, and a badge showing 3.4 defects per million at six sigma" loading="lazy"><figcaption>Six Sigma: the bell curve out to six standard deviations.</figcaption></figure>
+  <figure class="fw"><img src="six-sigma.png" data-n="six-sigma" onerror="imgFail(this)" width="1536" height="1024" alt="Bell curve out to six standard deviations, with a table of sigma levels, defects per million opportunities, and yield, and a badge showing 3.4 defects per million at six sigma" loading="lazy"><figcaption>Six Sigma: the bell curve out to six standard deviations.</figcaption></figure>
   <div class="card"><h3>Lean</h3>
     <p>Lean manufacturing comes from the Toyota Production System (Clegg et al., 2010, p. 138) and was later used alongside Six Sigma. Its goal is to reduce as much waste as possible while providing the highest value to the customer (Clegg et al., 2010, p. 139).</p>
     <p>Lean directs employees to look at every process in a company and categorize it as either value adding or value subtracting. Common wastes include excess inventory, unnecessary motion, unnecessary transportation, and unnecessary waiting (Clegg et al., 2010, p. 139). Waste creates bottlenecks that starve parts of the process and add cost and time. For example, stocking large amounts of steel ties up funds that could have gone into development, and it takes up space. Once that is identified as a larger waste than other processes, action can be taken to cut inventory and free money and space for more profitable uses.</p></div>
-  <figure class="md"><img src="images/lean.png" width="765" height="531" alt="Modern factory floor with a robotic arm and a display reading Lean plus Six Sigma: stable processes, consistent quality, continuous improvement" loading="lazy"><figcaption>Lean: removing waste from every step.</figcaption></figure>
+  <figure class="md"><img src="lean.png" data-n="lean" onerror="imgFail(this)" width="765" height="531" alt="Modern factory floor with a robotic arm and a display reading Lean plus Six Sigma: stable processes, consistent quality, continuous improvement" loading="lazy"><figcaption>Lean: removing waste from every step.</figcaption></figure>
   <div class="card"><h3>DMAIC, step by step</h3>
     <p>DMAIC stands for Define, Measure, Analyze, Improve, and Control (Clegg et al., 2010, p. 142). The steps run in order, and the cycle repeats as a company works through its problems. Here is each step with the shaft example from the industry analysis.</p>
     <ol>
@@ -253,7 +253,7 @@ button.b,.wb button,nav button{min-height:44px}
     <li><b>Improve.</b> AI can predict machine downtime better (George et al., 2019, Ch. 2, p. 26) and reduce setup time (George et al., 2019, Ch. 2, p. 30).</li>
   </ul>
   <p>Once the right places are identified, the benefits become concrete, and the human framework keeps them pointed at real problems.</p>
-  <figure class="md"><img src="images/future.png" width="763" height="531" alt="Graphic showing Lean Six Sigma and AI joined in an infinity loop, advancing Industry 4.0" loading="lazy"><figcaption>Lean Six Sigma and AI working together in Industry 4.0.</figcaption></figure>
+  <figure class="md"><img src="future.png" data-n="future" onerror="imgFail(this)" width="763" height="531" alt="Graphic showing Lean Six Sigma and AI joined in an infinity loop, advancing Industry 4.0" loading="lazy"><figcaption>Lean Six Sigma and AI working together in Industry 4.0.</figcaption></figure>
   <div class="two">
     <div class="card"><h3 style="margin-top:0">What stays the same</h3><p>Data-based decisions, a focus on the customer’s needs, and the DMAIC cycle of measuring, changing, and checking. These are what keep new tools from being used for their own sake.</p></div>
     <div class="card"><h3 style="margin-top:0">What changes</h3><p>The speed and cost of measuring and analyzing, and the range of improvements available, such as better downtime prediction and shorter setup times.</p></div>
@@ -269,6 +269,9 @@ const secs=[...document.querySelectorAll("main section")],nav=document.querySele
 function show(i){secs.forEach((s,j)=>s.hidden=i!==j);[...nav.children].forEach((b,j)=>b.setAttribute("aria-selected",i===j));scrollTo(0,0)}
 secs.forEach((s,i)=>{const b=document.createElement("button");b.textContent=s.dataset.title;b.setAttribute("role","tab");b.onclick=()=>show(i);nav.appendChild(b)});
 show(0);
+/* Images: look beside index.html first, then in an images/ folder; show a clear note if neither works */
+function imgFail(el){const n=el.dataset.n;if(!el.dataset.t){el.dataset.t=1;el.src="images/"+n+".png";return}
+ const d=document.createElement("div");d.className="ph";d.textContent="Image not found. Upload "+n+".png to the same folder as index.html.";el.replaceWith(d)}
 /* Citations: only sources cited in the two papers (APA 7) */
 const R=[
 "Campoverde-Pillajo, C. D., Allauca-Castillo, L. A., Peralta-Gamboa, D. A., &amp; Borja-Salinas, E. I. (2026). Lean six sigma application for enhancing production efficiency in plasticizing machines manufacturing: A metalworking industry case study. <i>Frontiers in Sustainability, 7</i>, 1-17. <a href='https://doi.org/10.3389/frsus.2026.1798379'>https://doi.org/10.3389/frsus.2026.1798379</a>",
